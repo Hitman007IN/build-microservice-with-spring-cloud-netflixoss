@@ -1,0 +1,10 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: my-eureka-server
+
+#Set your own datacenter location and environment to display in eureka server registry dashboard
+eureka:
+  datacenter: Trivandrum
+  environment: dev

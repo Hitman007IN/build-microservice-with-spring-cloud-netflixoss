@@ -1,0 +1,11 @@
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    peer-node-read-timeout-ms: 300000

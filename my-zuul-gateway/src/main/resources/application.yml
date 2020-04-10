@@ -1,0 +1,31 @@
+info:
+  component: Zuul Server
+
+management:
+  endpoints:
+    restart:
+      enabled: true
+    shutdown:
+      enabled: true
+    health:
+      sensitive: false
+
+zuul:
+  ignoredServices: "*"
+  routes:
+    servicea_health:
+      path: /health
+      serviceId: my-service-a
+    servicea_fetch:
+      path: /fetch-bc
+      serviceId: my-service-a
+      
+#Ribbon is auto integrated with Zuul and for this exercise we are not using that.
+ribbon:
+  eureka: 
+    enabled: true
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: INFO

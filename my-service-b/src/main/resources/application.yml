@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: my-service-b
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: my-config-server
+    enabled: true
+    
+management:
+  security:
+    enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
+    
+eureka: #tells about the Eureka server details and its refresh time
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    lease:
+      duration: 5
+    enabled: true
+    # by default service uses service name as id to differentiate each other in other env, but in local sometime they conflict. 
+    # So we need to manually give instance id
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
