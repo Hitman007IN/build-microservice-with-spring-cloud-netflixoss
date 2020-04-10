@@ -1,5 +1,7 @@
 # build-microservice-with-spring-cloud-netflixoss
 
+![alt text](https://github.com/Hitman007IN/build-microservice-with-spring-cloud-netflixoss/blob/master/screenshot/microservice_architecture.png)
+
 # Tech Stack
 - Java 1.8
 - Spring Boot 2.x
