@@ -6,6 +6,8 @@
 - Java 1.8
 - Spring Boot 2.x
 - Spring Cloud Netflix Hoxton.SR1
+- Spring Cloud Security
+- JWT + Oauth2.0
 
 # Spring + Netflix OSS Stack
 - Netflix Eureka Server
