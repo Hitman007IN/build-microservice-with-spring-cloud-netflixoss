@@ -18,15 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.demo.boot.service.conf.ServiceCConfiguration;
+import com.demo.boot.service.conf.ServiceProxy;
 import com.demo.boot.service.pojo.BeautifyJson;
 import com.demo.boot.service.pojo.ServiceDetails;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RibbonClient(name = "my-service-c", configuration = ServiceCConfiguration.class)
 public class MiddleController {
-
-	private static final Logger LOG = LoggerFactory.getLogger(MiddleController.class);
 	
 	@LoadBalanced
 	@Bean
@@ -34,8 +36,11 @@ public class MiddleController {
 		return builder.build();
 	}
 
+	//@Autowired
+	//RestTemplate restTemplate;
+	
 	@Autowired
-	RestTemplate restTemplate;
+	ServiceProxy serviceProxy;
 	
 	@Autowired
 	Environment environment;
@@ -49,7 +54,7 @@ public class MiddleController {
 	@GetMapping("/fetch-b")
 	public BeautifyJson fetchServiceDetails() throws UnknownHostException {
 		
-		LOG.info("Call Reached Service B...");
+		log.info("Call Reached Service B...");
 		
 		ServiceDetails serviceDetailsForB = new ServiceDetails();
 		
@@ -65,12 +70,16 @@ public class MiddleController {
 		listOfServices.add(serviceDetailsForB);
 		
 		String url = "http://my-service-c/fetch-c";
-		LOG.debug("Calling Service C from URL: {}", url);
+		log.debug("Calling Service C from URL: {}", url);
 		
 		BeautifyJson jsonResponse = new BeautifyJson();
 		
-		BeautifyJson responseFromDownstream = restTemplate.getForObject(url, BeautifyJson.class);
+		//BeautifyJson responseFromDownstream = restTemplate.getForObject(url, BeautifyJson.class);
+		
+		// Instead of Rest Template Feign will take care of rest API call
 
+		BeautifyJson responseFromDownstream = serviceProxy.fetchServiceDetails();
+		
 		List<ServiceDetails> downstreamList = responseFromDownstream.getListOfServices();
 		
 		if(!downstreamList.isEmpty()) {
@@ -87,7 +96,7 @@ public class MiddleController {
 	
 	public BeautifyJson fetchDefaultServiceDetails() throws UnknownHostException {
 		
-		LOG.info("Calling Service C Failed, enabling Hystrix...");
+		log.info("Calling Service C Failed, enabling Hystrix...");
 		
 		ServiceDetails serviceDetailsForB = new ServiceDetails();
 		

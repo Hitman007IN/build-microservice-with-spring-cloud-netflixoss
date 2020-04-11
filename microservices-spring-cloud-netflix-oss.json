@@ -1,0 +1,458 @@
+{
+    "version": 6,
+    "entities": [
+        {
+            "entity": {
+                "type": "Project",
+                "id": "09bc91a3-4d81-44cf-abf7-7d6807577dbb",
+                "name": "microservices-spring-cloud-netflix-oss"
+            },
+            "children": [
+                {
+                    "entity": {
+                        "type": "Service",
+                        "description": "This is the first core service that directly comes under Zuul Gateway and the first to respond to user request. Integrated with Eureka, Hystrix and Ribbon",
+                        "id": "030e17cc-d29b-4e3a-b859-0a8a46f67a4c",
+                        "name": "Service A"
+                    },
+                    "children": [
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8080",
+                                    "path": "/actuator/health"
+                                },
+                                "id": "0d754a49-3601-4c97-a931-5a58466991e3",
+                                "name": "Actuator Health Endpoint",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8080",
+                                    "path": "/fetch-bc"
+                                },
+                                "id": "0db96767-07ce-45f0-b0de-87de0dec06a8",
+                                "name": "Fetch Services Endpoint",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8080",
+                                    "path": "/health"
+                                },
+                                "id": "fb5f511e-2780-49ba-94ee-477feae770bf",
+                                "name": "Health Endpoint",
+                                "headers": []
+                            }
+                        }
+                    ]
+                },
+                {
+                    "entity": {
+                        "type": "Service",
+                        "description": "This is an intermediate service, just after the Service A. Integrated with Eureka, Hystrix and Ribbon",
+                        "id": "fe0b9236-2b77-40e7-8e76-b4d0ca098a91",
+                        "name": "Service B"
+                    },
+                    "children": [
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8081",
+                                    "path": "/actuator/health"
+                                },
+                                "id": "8b012cec-882e-4927-a342-d7b45eb98fe0",
+                                "name": "Actuator Health Endpoint",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8081",
+                                    "path": "/fetch-b"
+                                },
+                                "id": "5f8b6873-b8af-4d92-93dc-e218539e4c1e",
+                                "name": "Fetch Services Endpoint",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8081",
+                                    "path": "/health"
+                                },
+                                "id": "cccc097e-6eca-4508-beae-698fc6eaf149",
+                                "name": "Health Endpoint",
+                                "headers": []
+                            }
+                        }
+                    ]
+                },
+                {
+                    "entity": {
+                        "type": "Service",
+                        "description": "Last service in the chain Integrated with Eureka and Ribbon",
+                        "id": "585cca1d-37f1-4fe3-95ec-4873fe11d255",
+                        "name": "Service C"
+                    },
+                    "children": [
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8082",
+                                    "path": "/actuator/health"
+                                },
+                                "id": "a5daa381-c239-4736-a346-2b81ddb29878",
+                                "name": "Actuator Health Endpoint",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8082",
+                                    "path": "/fetch-c"
+                                },
+                                "id": "a129cf25-1ec8-4086-800e-5ad6e32e0624",
+                                "name": "Fetch Services Endpoint",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8082",
+                                    "path": "/health"
+                                },
+                                "id": "1e0b2328-eba3-4ae7-b846-b27f7032fab7",
+                                "name": "Health Endpoint",
+                                "headers": []
+                            }
+                        }
+                    ]
+                },
+                {
+                    "entity": {
+                        "type": "Service",
+                        "description": "Gateway to the underneath microservices. Integrated with Eureka, Ribbon, Hystrix and Auth Server  ",
+                        "id": "541b2361-c584-486b-ba4a-73c8371cb754",
+                        "name": "Zuul with Auth"
+                    },
+                    "children": [
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "requestBody": true,
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                                    "name": "POST"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text",
+                                    "textBody": "{\n  \"username\":\"vishakh\",\n  \"password\":\"12345\"\n}"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8765",
+                                    "path": "/auth"
+                                },
+                                "id": "fb70ca68-79bd-457a-a9af-979363493f56",
+                                "name": "Auth Token",
+                                "headers": [
+                                    {
+                                        "enabled": true,
+                                        "name": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8765",
+                                    "path": "/fetch-bc"
+                                },
+                                "id": "96558b14-bcf3-4829-b7f4-24bd3a59f4dc",
+                                "name": "Authorised Request to Service A Fetch Endpoint",
+                                "headers": [
+                                    {
+                                        "enabled": true,
+                                        "name": "Authorization",
+                                        "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aXNoYWtoIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU4NjYyNDM4MCwiZXhwIjoxNTg2NzEwNzgwfQ.N5NPQSuyMknaK0DCXpQCPzv0k_XYW0DMrTVUQxsWBhYzpD3UjhrpqqwJNpsJWCDPnGSQPs-oGVOlnxiYMY-kxw"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8765",
+                                    "path": "/health"
+                                },
+                                "id": "aa0a9da6-842d-4ce7-9ea4-c8e670a87788",
+                                "name": "Authorized Request to Service A Health Endpoint",
+                                "headers": [
+                                    {
+                                        "enabled": true,
+                                        "name": "Authorization",
+                                        "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aXNoYWtoIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU4NjYyNDM4MCwiZXhwIjoxNTg2NzEwNzgwfQ.N5NPQSuyMknaK0DCXpQCPzv0k_XYW0DMrTVUQxsWBhYzpD3UjhrpqqwJNpsJWCDPnGSQPs-oGVOlnxiYMY-kxw"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -19,6 +19,14 @@ zuul:
     servicea_fetch:
       path: /fetch-bc
       serviceId: my-service-a
+    # Map path to auth service
+    auth-service:
+      path: /auth/**
+      service-id: my-auth-server
+      # In case of auth, we need to pass the "/auth/" in the path to auth service. So, set strip-prefix to false
+      strip-prefix: false
+      # Exclude authorization from sensitive headers
+      sensitive-headers: Cookie,Set-Cookie  
       
 #Ribbon is auto integrated with Zuul and for this exercise we are not using that.
 ribbon:

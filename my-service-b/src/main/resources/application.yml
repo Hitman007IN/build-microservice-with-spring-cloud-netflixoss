@@ -50,3 +50,14 @@ hystrix:
     circuitBreaker:
       errorThresholdPercentage: 60
       
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+  # To disable Hystrix in Feign   
+  hystrix:
+    enabled: false
+      

@@ -11,6 +11,9 @@
 - Netflix Eureka Server
 - Netflix Zuul
 - Netflix Ribbon
+- Netflix Hystrix
+- Netflix Turbine
+- Netflix Feign
 
 # Steps to bring it up
 
@@ -43,7 +46,23 @@
 - java -jar my-zuul-gateway-0.0.1-SNAPSHOT.jar
 - Check on http://localhost:8765/health, http://localhost:8765/fetch-bc
 
-6) Spin up Hystrix Dashboard
+6) Spin up Auth Server
+- Authenticate each request passing through zuul with JWT token
+- mvn clean install -DskipTests
+- java -jar my-auth-server-0.0.1-SNAPSHOT.jar
+- Check on http://localhost:8765/health and you should get 401 Unauthorized
+- To get JWT token, call 
+	- HTTP POST
+	- http://localhost:8765/auth
+	- JSON body
+	``` {
+          "username":"vishakh",
+          "password":"12345"
+        }
+	```
+- Once received, call http://localhost:8765/health, http://localhost:8765/fetch-bc with header Authorization: Bearer {TOKEN}
+
+7) Spin up Hystrix Dashboard
 - mvn clean install -DskipTests
 - java -jar my-hystrix-dsahboard-0.0.1-SNAPSHOT.jar
 - To add some load

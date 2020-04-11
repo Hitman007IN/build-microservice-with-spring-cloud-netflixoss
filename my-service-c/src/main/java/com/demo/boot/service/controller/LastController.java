@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demo.boot.service.pojo.BeautifyJson;
 import com.demo.boot.service.pojo.ServiceDetails;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 public class LastController {
-
-	private static final Logger LOG = LoggerFactory.getLogger(LastController.class);
 	
 	@Autowired
 	Environment environment;
@@ -31,7 +32,7 @@ public class LastController {
 	@GetMapping("/fetch-c")
 	public BeautifyJson fetchServiceDetails() throws UnknownHostException {
 		
-		LOG.info("Call Reached Service C...");
+		log.info("Call Reached Service C...");
 		
 		ServiceDetails serviceDetailsForC = new ServiceDetails();
 		

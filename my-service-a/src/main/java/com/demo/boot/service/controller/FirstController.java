@@ -5,8 +5,6 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -18,15 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.demo.boot.service.conf.ServiceBConfiguration;
+import com.demo.boot.service.conf.ServiceProxy;
 import com.demo.boot.service.pojo.BeautifyJson;
 import com.demo.boot.service.pojo.ServiceDetails;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RibbonClient(name = "my-service-b", configuration = ServiceBConfiguration.class)
 public class FirstController {
-
-	private static final Logger LOG = LoggerFactory.getLogger(FirstController.class);
 	
 	@Autowired
 	Environment environment;
@@ -37,8 +37,11 @@ public class FirstController {
 		return builder.build();
 	}
 
+	//@Autowired
+	//RestTemplate restTemplate;
+	
 	@Autowired
-	RestTemplate restTemplate;
+	ServiceProxy serviceProxy;
 	
 	@GetMapping("/health") 
 	public String getHealthStatus() {
@@ -49,7 +52,7 @@ public class FirstController {
 	@GetMapping("/fetch-bc")
 	public BeautifyJson fetchServiceDetails() throws UnknownHostException {
 		
-		LOG.info("Calling Service B...");
+		log.info("Calling Service B...");
 		
 		ServiceDetails serviceDetailsForA = new ServiceDetails();
 		
@@ -67,10 +70,13 @@ public class FirstController {
 		BeautifyJson jsonResponse = new BeautifyJson();
 		
 		String url = "http://my-service-b/fetch-b";
-		LOG.debug("Calling Service B from URL: {}", url);
+		log.debug("Calling Service B from URL: {}", url);
 		
-		BeautifyJson responseFromDownstream = restTemplate.getForObject(url, BeautifyJson.class);
-
+		//BeautifyJson responseFromDownstream = restTemplate.getForObject(url, BeautifyJson.class);
+		
+		// Instead of Rest Template Feign will take care of rest API call
+		BeautifyJson responseFromDownstream = serviceProxy.fetchServiceDetails();
+		
 		List<ServiceDetails> downstreamList = responseFromDownstream.getListOfServices();
 			
 		if(!downstreamList.isEmpty()) {
@@ -88,7 +94,7 @@ public class FirstController {
 	
 	public BeautifyJson fetchDefaultServiceDetails() throws UnknownHostException {
 		
-		LOG.info("Calling Service B Failed, enabling Hystrix...");
+		log.info("Calling Service B Failed, enabling Hystrix...");
 		
 		ServiceDetails serviceDetailsForA = new ServiceDetails();
 		
