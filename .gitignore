@@ -75,3 +75,16 @@ my-zuul-gateway/.mvn/wrapper/MavenWrapperDownloader.java
 my-zuul-gateway/mvnw
 my-zuul-gateway/mvnw.cmd
 RemoteSystemsTempFiles/.project
+.sonarlint/modules/my-hystrix-dsahboard/issues/3/e/3e37e70dd1cf53d21d321c4d01251628885610a6
+*.pb
+.sonarlint/modules/my-hystrix-dsahboard/issues/4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+.sonarlint/modules/my-hystrix-dsahboard/issues/8/5/8517466c55d1877f899b51705a57d8e0496e5245
+.sonarlint/modules/my-hystrix-dsahboard/issues/a/6/a6d8b8556fee0e03112ce2bf34b8cb27a7dc9e58
+.sonarlint/modules/my-hystrix-turbine/issues/3/5/3566ab70ae9e0aa1f1b611276d85bc209568038e
+.sonarlint/modules/my-hystrix-turbine/issues/4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+.sonarlint/modules/my-hystrix-turbine/issues/a/6/a6d8b8556fee0e03112ce2bf34b8cb27a7dc9e58
+my-hystrix-dsahboard/.mvn/wrapper/maven-wrapper.jar
+my-hystrix-dsahboard/.mvn/wrapper/maven-wrapper.properties
+my-hystrix-dsahboard/.mvn/wrapper/MavenWrapperDownloader.java
+my-hystrix-dsahboard/mvnw
+my-hystrix-dsahboard/mvnw.cmd

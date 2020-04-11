@@ -4,16 +4,18 @@ server:
 spring:
   application:
     name: my-service-b
+  # Rabit MQ to stream hystrix streams to the queue for turbine to aggregate and show in hystrix dashboard
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     config:
       discovery:
         enabled: true
         service-id: my-config-server
     enabled: true
-    
-management:
-  security:
-    enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
     
 eureka: #tells about the Eureka server details and its refresh time
   client:
@@ -30,3 +32,21 @@ eureka: #tells about the Eureka server details and its refresh time
     instance-id: ${spring.application.name}:${random.int}
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
+
+# To enable the actuator to see hystrix-stream at http://localhost:8080/actuator/hystrix.stream 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+            
+hystrix:
+  command:
+    fetch-c:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+    circuitBreaker:
+      errorThresholdPercentage: 60
+      

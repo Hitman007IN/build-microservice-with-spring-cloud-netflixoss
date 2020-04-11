@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 import com.demo.boot.service.conf.ServiceBConfiguration;
 import com.demo.boot.service.pojo.BeautifyJson;
 import com.demo.boot.service.pojo.ServiceDetails;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 @RibbonClient(name = "my-service-b", configuration = ServiceBConfiguration.class)
@@ -44,6 +45,7 @@ public class FirstController {
 		return "I am alright, don't worry. Says Service A";
 	}
 	
+	@HystrixCommand(commandKey = "fetch-b", fallbackMethod="fetchDefaultServiceDetails")
 	@GetMapping("/fetch-bc")
 	public BeautifyJson fetchServiceDetails() throws UnknownHostException {
 		
@@ -82,6 +84,36 @@ public class FirstController {
 		
 		return jsonResponse;
 		
+	}
+	
+	public BeautifyJson fetchDefaultServiceDetails() throws UnknownHostException {
+		
+		LOG.info("Calling Service B Failed, enabling Hystrix...");
+		
+		ServiceDetails serviceDetailsForA = new ServiceDetails();
+		
+		String appName = environment.getProperty("spring.application.name");
+		String port = environment.getProperty("local.server.port");
+		String appUrl = "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + port;
+		
+		serviceDetailsForA.setServiceName(appName);
+		serviceDetailsForA.setServicePort(port);
+		serviceDetailsForA.setServiceUrl(appUrl);
+		
+		ServiceDetails serviceDetailsForB = new ServiceDetails();
+		serviceDetailsForB.setServiceName("No App Found");
+		serviceDetailsForB.setServicePort("No Port Found");
+		serviceDetailsForB.setServiceUrl("No URL Found");
+		
+		List<ServiceDetails> listOfServices = new ArrayList<ServiceDetails>();
+		listOfServices.add(serviceDetailsForA);
+		listOfServices.add(serviceDetailsForB);
+		
+		BeautifyJson jsonResponse = new BeautifyJson();
+		
+		jsonResponse.setListOfServices(listOfServices);
+		
+		return jsonResponse;
 	}
 	
 }

@@ -1,0 +1,12 @@
+
+server:
+  port: 8788
+spring:
+  application:
+    name: my-hystrix-dashboard
+
+turbine:
+  clusterNameExpression: new String("DEMO-HYSTRIX-AGGREGATE")
+  aggregator:
+    clusterConfig: DEMO-HYSTRIX-AGGREGATE
+  appConfig: my-service-a,my-service-b

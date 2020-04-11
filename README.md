@@ -40,3 +40,10 @@
 - mvn clean install -DskipTests
 - java -jar my-zuul-gateway-0.0.1-SNAPSHOT.jar
 - Check on http://localhost:8765/health, http://localhost:8765/fetch-bc
+
+6) Spin up Hystrix Dashboard
+- mvn clean install -DskipTests
+- java -jar my-hystrix-dsahboard-0.0.1-SNAPSHOT.jar
+- To add some load
+	- while true; do curl -i http://localhost:8080/fetch-bc; done
+	- while true; do curl -i http://localhost:8081/fetch-b; done
