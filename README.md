@@ -55,7 +55,8 @@
 	- HTTP POST
 	- http://localhost:8765/auth
 	- JSON body
-	``` {
+	``` 
+	    {
           "username":"vishakh",
           "password":"12345"
         }
