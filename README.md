@@ -1,5 +1,7 @@
 # build-microservice-with-spring-cloud-netflixoss
 
+![alt text](https://github.com/Hitman007IN/build-microservice-with-spring-cloud-netflixoss/blob/master/screenshot/microservice_architecture.png)
+
 # Tech Stack
 - Java 1.8
 - Spring Boot 2.x
@@ -40,6 +42,7 @@
 - mvn clean install -DskipTests
 - java -jar my-zuul-gateway-0.0.1-SNAPSHOT.jar
 - Check on http://localhost:8765/health, http://localhost:8765/fetch-bc
+<<<<<<< HEAD
 
 6) Spin up Hystrix Dashboard
 - mvn clean install -DskipTests
@@ -47,3 +50,5 @@
 - To add some load
 	- while true; do curl -i http://localhost:8080/fetch-bc; done
 	- while true; do curl -i http://localhost:8081/fetch-b; done
+=======
+>>>>>>> 93c48e68f606a8efb2040c1058a64dbbfe201b07
