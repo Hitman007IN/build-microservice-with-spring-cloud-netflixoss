@@ -107,3 +107,8 @@ my-auth-server/.mvn/wrapper/MavenWrapperDownloader.java
 my-auth-server/mvnw
 my-auth-server/mvnw.cmd
 .sonarlint/default/.sonartmp_2641108093415278194/sonarlint-slf4j-sonar-log7529387710632244541.jar
+.sonarlint/default/.sonartmp_5065476546671732041/sonarlint-slf4j-sonar-log7108815289186026157.jar
+.sonarlint/modules/my-auth-server/issues/1/a/1abe9b36f94df1933fd4ed198396407cde91d824
+.sonarlint/modules/my-auth-server/issues/7/f/7f4311281439c218415f3083a4feadb93e5f4cb6
+.sonarlint/modules/my-zipkin-server/issues/2/d/2d3e62789fd3efbb75ad1170b6af17fb3d651ee0
+.sonarlint/modules/my-zipkin-server/issues/4/4/442292b8a7efeabbe4cc176709b833b1792140ec

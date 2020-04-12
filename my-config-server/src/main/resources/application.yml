@@ -19,7 +19,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/isilona/microservices/
+          uri: https://github.com/Hitman007IN/build-microservice-with-spring-cloud-netflixoss
           search-paths:
-            - "ms-config-properties/{application}/{profile}"
-            - "ms-config-properties/global/{profile}"
+            - "my-config-properties/{application}/{profile}"
+            - "my-config-properties/global/{profile}"
