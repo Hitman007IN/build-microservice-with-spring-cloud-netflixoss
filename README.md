@@ -19,7 +19,6 @@
 - Sleuth
 - Zipkin
 
-
 # Steps to bring it up
 
 1) Spin up Eureka server
