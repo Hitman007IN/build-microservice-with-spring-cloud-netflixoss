@@ -7,7 +7,7 @@
 - Spring Boot 2.x
 - Spring Cloud Netflix Hoxton.SR1
 - Spring Cloud Security
-- JWT + Oauth2.0
+- JWT
 
 # Spring + Netflix OSS Stack
 - Netflix Eureka Server
@@ -16,6 +16,9 @@
 - Netflix Hystrix
 - Netflix Turbine
 - Netflix Feign
+- Sleuth
+- Zipkin
+
 
 # Steps to bring it up
 
@@ -71,3 +74,49 @@
 - To add some load
 	- while true; do curl -i http://localhost:8080/fetch-bc; done
 	- while true; do curl -i http://localhost:8081/fetch-b; done
+
+8) Spin up Zipkin server and ui
+- docker run -d -p 9411:9411 openzipkin/zipkin
+- http://localhost:9411/zipkin/
+
+9) Spin up ELK in local
+- Create 02-beats-input.conf
+```
+input {
+  tcp {
+    port => 5044
+    ssl => false
+  }
+}
+```
+- Create 30-output.conf
+```
+filter {
+  json {
+    source => "message"
+  }
+}
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    manage_template => false
+    index => "logstash-local"
+  }
+}
+```
+- Create Dockerfile
+```
+FROM sebp/elk
+
+# overwrite existing file
+RUN rm /etc/logstash/conf.d/30-output.conf
+COPY 30-output.conf /etc/logstash/conf.d/30-output.conf
+
+RUN rm /etc/logstash/conf.d/02-beats-input.conf
+COPY 02-beats-input.conf /etc/logstash/conf.d/02-beats-input.conf
+```
+- Build docker with docker build -t local-elk .
+- Run docker image with docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk local-elk
+- Kibana on port 5601, ElasticSearch on port 9200 and LogStash on port 5044
+- Check on http://localhost:5601 for Kibana
+

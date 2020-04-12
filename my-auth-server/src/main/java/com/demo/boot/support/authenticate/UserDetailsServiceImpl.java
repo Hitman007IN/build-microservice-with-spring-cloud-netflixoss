@@ -1,4 +1,4 @@
-package com.demo.boot.support.authente;
+package com.demo.boot.support.authenticate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.demo.boot.support.authenticate.pojo.AppUser;
 
 @Service // It has to be annotated with @Service.
 public class UserDetailsServiceImpl implements UserDetailsService {

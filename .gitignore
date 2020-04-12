@@ -106,3 +106,4 @@ my-auth-server/.mvn/wrapper/maven-wrapper.properties
 my-auth-server/.mvn/wrapper/MavenWrapperDownloader.java
 my-auth-server/mvnw
 my-auth-server/mvnw.cmd
+.sonarlint/default/.sonartmp_2641108093415278194/sonarlint-slf4j-sonar-log7529387710632244541.jar

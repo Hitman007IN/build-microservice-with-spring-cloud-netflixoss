@@ -1,4 +1,4 @@
-package com.demo.boot.support.authente;
+package com.demo.boot.support.authenticate.pojo;
 
 import lombok.Getter;
 import lombok.Setter;
