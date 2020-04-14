@@ -10,6 +10,8 @@ spring:
         enabled: true
         service-id: my-config-server
     enabled: true
+  profiles:
+    active: dev
     
 # To enable the actuator to see hystrix-stream at http://localhost:8080/actuator/hystrix.stream 
 # To make an actuator endpoint available via HTTP, it needs to be both enabled and exposed. By default:

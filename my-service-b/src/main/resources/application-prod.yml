@@ -1,0 +1,72 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: my-service-b
+  # Rabit MQ to stream hystrix streams to the queue for turbine to aggregate and show in hystrix dashboard
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: my-config-server
+    enabled: true
+  profiles:
+    active: prod
+    
+eureka: #tells about the Eureka server details and its refresh time
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    lease:
+      duration: 5
+    enabled: true
+    # by default service uses service name as id to differentiate each other in other env, but in local sometime they conflict. 
+    # So we need to manually give instance id
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+
+# To enable the actuator to see hystrix-stream at http://localhost:8080/actuator/hystrix.stream 
+# To make an actuator endpoint available via HTTP, it needs to be both enabled and exposed. By default:
+# Only the /health and /info endpoints are exposed, regardless of Spring Security being present and configured in your application.
+# All endpoints but /shutdown are enabled.
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    shutdown:
+      enabled: true
+            
+hystrix:
+  command:
+    fetch-c:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+    circuitBreaker:
+      errorThresholdPercentage: 60
+      
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+  # To disable Hystrix in Feign   
+  hystrix:
+    enabled: false
+      
