@@ -18,7 +18,7 @@ spring:
         service-id: my-config-server
     enabled: true
   profiles:
-    active: development
+    active: dev
     
 #tells about the Eureka server details and its refresh time
 eureka: 

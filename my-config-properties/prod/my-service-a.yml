@@ -1,2 +1,2 @@
-env: default
+env: prod
 app: my-service-a
