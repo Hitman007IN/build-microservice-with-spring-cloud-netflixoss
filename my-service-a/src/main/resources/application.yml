@@ -37,6 +37,9 @@ eureka:
     leaseExpirationDurationInSeconds: 2
 
 # To enable the actuator to see hystrix-stream at http://localhost:8080/actuator/hystrix.stream 
+# To make an actuator endpoint available via HTTP, it needs to be both enabled and exposed. By default:
+# Only the /health and /info endpoints are exposed, regardless of Spring Security being present and configured in your application.
+# All endpoints but /shutdown are enabled.
 management:
   security:
     enabled: false
@@ -44,6 +47,8 @@ management:
     web:
       exposure:
         include: "*"
+    shutdown:
+      enabled: true
 
 # Hystrix command specified in the controller method, with additional parameter like timeout of circuit    
 hystrix:
