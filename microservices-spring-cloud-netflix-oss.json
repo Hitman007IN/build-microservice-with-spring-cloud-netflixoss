@@ -11,6 +11,207 @@
                 {
                     "entity": {
                         "type": "Service",
+                        "id": "3896e3bf-f9d1-47f4-82f7-93a76a75b643",
+                        "name": "Config Server"
+                    },
+                    "children": [
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8888",
+                                    "path": "/my-service-a/default"
+                                },
+                                "id": "aa664f32-c983-440b-b676-136cc0cfa23e",
+                                "name": "Service A default profile",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8888",
+                                    "path": "/my-service-a/dev"
+                                },
+                                "id": "0f0bb467-f9c8-409f-8b91-cdb2a4e34c83",
+                                "name": "Service A dev profile",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8888",
+                                    "path": "/my-service-b/default"
+                                },
+                                "id": "e3170ca8-21e1-4088-a0a6-714678164645",
+                                "name": "Service B default profile",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8888",
+                                    "path": "/my-service-b/dev"
+                                },
+                                "id": "16c8375a-f99a-48f9-abc5-a170db54f869",
+                                "name": "Service B dev profile",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8888",
+                                    "path": "/my-service-c/default"
+                                },
+                                "id": "4df79c9c-859a-4236-8dd8-8ac7e5461323",
+                                "name": "Service C default profile",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8888",
+                                    "path": "/my-service-c/dev"
+                                },
+                                "id": "9f557f36-0f55-4809-9886-38d56bc746f6",
+                                "name": "Service C dev profile",
+                                "headers": []
+                            }
+                        }
+                    ]
+                },
+                {
+                    "entity": {
+                        "type": "Service",
                         "description": "This is the first core service that directly comes under Zuul Gateway and the first to respond to user request. Integrated with Eureka, Hystrix and Ribbon",
                         "id": "030e17cc-d29b-4e3a-b859-0a8a46f67a4c",
                         "name": "Service A"
@@ -46,6 +247,46 @@
                                 "id": "0d754a49-3601-4c97-a931-5a58466991e3",
                                 "name": "Actuator Health Endpoint",
                                 "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "requestBody": true,
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                                    "name": "POST"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text",
+                                    "textBody": "{\n\"config\": \"update\"\n}"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8080",
+                                    "path": "/actuator/refresh"
+                                },
+                                "id": "2ccb2ade-9e27-4a89-ae69-fa6896f7f617",
+                                "name": "Actuator Refresh Endpoint",
+                                "headers": [
+                                    {
+                                        "enabled": true,
+                                        "name": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -158,6 +399,46 @@
                             "entity": {
                                 "type": "Request",
                                 "method": {
+                                    "requestBody": true,
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                                    "name": "POST"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text",
+                                    "textBody": "{\n\"config\": \"update\"\n}"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8081",
+                                    "path": "/actuator/refresh"
+                                },
+                                "id": "f63ad0cc-0096-430e-b617-5fcffdca579f",
+                                "name": "Actuator Refresh Endpoint",
+                                "headers": [
+                                    {
+                                        "enabled": true,
+                                        "name": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
                                     "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
                                     "name": "GET"
                                 },
@@ -258,6 +539,46 @@
                                 "id": "a5daa381-c239-4736-a346-2b81ddb29878",
                                 "name": "Actuator Health Endpoint",
                                 "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "requestBody": true,
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                                    "name": "POST"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text",
+                                    "textBody": "{\n\"config\": \"update\"\n}"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8082",
+                                    "path": "/actuator/refresh"
+                                },
+                                "id": "f6afcdaf-c5e4-4455-b117-7d953eb2de2d",
+                                "name": "Actuator Refresh Endpoint",
+                                "headers": [
+                                    {
+                                        "enabled": true,
+                                        "name": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ]
                             }
                         },
                         {
@@ -407,7 +728,7 @@
                                     {
                                         "enabled": true,
                                         "name": "Authorization",
-                                        "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aXNoYWtoIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU4NjYyNDM4MCwiZXhwIjoxNTg2NzEwNzgwfQ.N5NPQSuyMknaK0DCXpQCPzv0k_XYW0DMrTVUQxsWBhYzpD3UjhrpqqwJNpsJWCDPnGSQPs-oGVOlnxiYMY-kxw"
+                                        "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aXNoYWtoIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU4NjY2NzU5NywiZXhwIjoxNTg2NzUzOTk3fQ.hwbWgoDJ6-qhxWuljDFIkBCcRQTwntV2hvVebsaGkeFKelYklBaWT5iI_d30EKUUz02arEavEjI16BfvhSd3-A"
                                     }
                                 ]
                             }
@@ -445,7 +766,7 @@
                                     {
                                         "enabled": true,
                                         "name": "Authorization",
-                                        "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aXNoYWtoIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU4NjYyNDM4MCwiZXhwIjoxNTg2NzEwNzgwfQ.N5NPQSuyMknaK0DCXpQCPzv0k_XYW0DMrTVUQxsWBhYzpD3UjhrpqqwJNpsJWCDPnGSQPs-oGVOlnxiYMY-kxw"
+                                        "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNTg2NjY3NTUzLCJleHAiOjE1ODY3NTM5NTN9.4Ge4TN2SDVJG0M1_ZJDjMHNIRCsOnA681RiAnRHbNRn-V0P3_RSMZ8cdRjHXuShikUO0k1JY_JKr_FQewYn-Zw"
                                     }
                                 ]
                             }

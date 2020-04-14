@@ -114,3 +114,11 @@ my-auth-server/mvnw.cmd
 .sonarlint/modules/my-zipkin-server/issues/4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 .sonarlint/default/.sonartmp_5952114590161043777/sonarlint-slf4j-sonar-log2433788039874619721.jar
 .sonarlint/default/.sonartmp_6135918430548965153/sonarlint-slf4j-sonar-log672613188124962282.jar
+.sonarlint/default/.sonartmp_3743668479680331862/sonarlint-slf4j-sonar-log4200670474417650130.jar
+.sonarlint/modules/my-service-a/issues/8/1/819fc99ace914ad4f6b9d57d190e6c52bc8910e0
+.sonarlint/modules/my-service-a/issues/9/5/95f6363b92881afcf55ed87e1b26a2bdb2374dc6
+.sonarlint/modules/my-service-b/issues/8/1/819fc99ace914ad4f6b9d57d190e6c52bc8910e0
+.sonarlint/modules/my-service-b/issues/9/5/95f6363b92881afcf55ed87e1b26a2bdb2374dc6
+.sonarlint/modules/my-service-c/issues/8/1/819fc99ace914ad4f6b9d57d190e6c52bc8910e0
+.sonarlint/default/.sonartmp_3743668479680331862/sonarlint-slf4j-sonar-log4200670474417650130.jar
+.sonarlint/default/.sonartmp_3743668479680331862/sonarlint-slf4j-sonar-log4200670474417650130.jar
