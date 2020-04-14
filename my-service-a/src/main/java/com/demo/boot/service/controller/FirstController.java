@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -24,9 +26,13 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RefreshScope
 @RestController
 @RibbonClient(name = "my-service-b", configuration = ServiceBConfiguration.class)
 public class FirstController {
+	
+	@Value("${env}")
+	private String configEnv;
 	
 	@Autowired
 	Environment environment;
@@ -45,7 +51,7 @@ public class FirstController {
 	
 	@GetMapping("/health") 
 	public String getHealthStatus() {
-		return "I am alright, don't worry. Says Service A";
+		return "I am alright, don't worry. Says Service A : "+this.configEnv;
 	}
 	
 	@HystrixCommand(commandKey = "fetch-b", fallbackMethod="fetchDefaultServiceDetails")

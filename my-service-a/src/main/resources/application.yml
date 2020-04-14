@@ -12,11 +12,14 @@ spring:
     password: guest
   cloud:
     config:
+      uri: http://localhost:8888
       discovery:
         enabled: true
         service-id: my-config-server
     enabled: true
-
+  profiles:
+    active: development
+    
 #tells about the Eureka server details and its refresh time
 eureka: 
   client:
