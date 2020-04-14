@@ -1,7 +1,7 @@
 
 
 spring:
-  profiles: git
+  #profiles: git
   cloud:
     config:
       server:
