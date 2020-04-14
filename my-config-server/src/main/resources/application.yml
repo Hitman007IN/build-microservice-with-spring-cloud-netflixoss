@@ -9,4 +9,4 @@ spring:
           search-paths:
             #- 'my-config-properties/global'
             #- 'my-config-properties/{application}'
-            - 'my-config-properties/'
+            - 'my-config-properties/{profile}'
