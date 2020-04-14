@@ -34,6 +34,9 @@ public class FirstController {
 	@Value("${env}")
 	private String configEnv;
 	
+	@Value("${app}")
+	private String configApp;
+	
 	@Autowired
 	Environment environment;
 	
@@ -51,7 +54,7 @@ public class FirstController {
 	
 	@GetMapping("/health") 
 	public String getHealthStatus() {
-		return "I am alright, don't worry. Says Service A : "+this.configEnv;
+		return "I am alright, don't worry. Says Service A with following details: Env: "+this.configEnv+" App: "+this.configApp;
 	}
 	
 	@HystrixCommand(commandKey = "fetch-b", fallbackMethod="fetchDefaultServiceDetails")

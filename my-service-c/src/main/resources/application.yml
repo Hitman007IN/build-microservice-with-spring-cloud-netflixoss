@@ -11,9 +11,19 @@ spring:
         service-id: my-config-server
     enabled: true
     
+# To enable the actuator to see hystrix-stream at http://localhost:8080/actuator/hystrix.stream 
+# To make an actuator endpoint available via HTTP, it needs to be both enabled and exposed. By default:
+# Only the /health and /info endpoints are exposed, regardless of Spring Security being present and configured in your application.
+# All endpoints but /shutdown are enabled.
 management:
   security:
-    enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    shutdown:
+      enabled: true
     
 eureka: #tells about the Eureka server details and its refresh time
   client:

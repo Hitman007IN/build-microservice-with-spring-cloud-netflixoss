@@ -8,8 +8,10 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -26,6 +28,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RefreshScope
 @RestController
 @RibbonClient(name = "my-service-c", configuration = ServiceCConfiguration.class)
 public class MiddleController {
@@ -35,6 +38,12 @@ public class MiddleController {
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
+	
+	@Value("${env}")
+	private String configEnv;
+	
+	@Value("${app}")
+	private String configApp;
 
 	//@Autowired
 	//RestTemplate restTemplate;
@@ -47,7 +56,7 @@ public class MiddleController {
 	
 	@GetMapping("/health") 
 	public String getHealthStatus() {
-		return "I am alright, don't worry. Says Service B";
+		return "I am alright, don't worry. Says Service B with following details: Env: "+this.configEnv+" App: "+this.configApp;
 	}
 	
 	@HystrixCommand(commandKey = "fetch-c", fallbackMethod="fetchDefaultServiceDetails")

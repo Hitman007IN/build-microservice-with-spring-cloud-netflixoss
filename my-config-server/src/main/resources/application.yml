@@ -1,12 +1,11 @@
 
 
 spring:
-  #profiles: git
   cloud:
     config:
       server:
         git:
           uri: https://github.com/Hitman007IN/build-microservice-with-spring-cloud-netflixoss
           search-paths:
-            - "my-config-properties/{application}/{profile}"
+            - "my-config-properties/{application}/"
             - "my-config-properties/global/"
