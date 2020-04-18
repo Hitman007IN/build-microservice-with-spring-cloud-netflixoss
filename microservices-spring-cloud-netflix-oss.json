@@ -40,10 +40,10 @@
                                         "version": "V11"
                                     },
                                     "host": "localhost:8888",
-                                    "path": "/my-service-a/default"
+                                    "path": "/bus/refresh"
                                 },
-                                "id": "aa664f32-c983-440b-b676-136cc0cfa23e",
-                                "name": "Service A default profile",
+                                "id": "4e06556c-bc1d-4989-91ca-f745af591631",
+                                "name": "Bus Refresh",
                                 "headers": []
                             }
                         },
@@ -104,10 +104,10 @@
                                         "version": "V11"
                                     },
                                     "host": "localhost:8888",
-                                    "path": "/my-service-b/default"
+                                    "path": "/my-service-a/prod"
                                 },
-                                "id": "e3170ca8-21e1-4088-a0a6-714678164645",
-                                "name": "Service B default profile",
+                                "id": "aa664f32-c983-440b-b676-136cc0cfa23e",
+                                "name": "Service A prod profile",
                                 "headers": []
                             }
                         },
@@ -168,10 +168,10 @@
                                         "version": "V11"
                                     },
                                     "host": "localhost:8888",
-                                    "path": "/my-service-c/default"
+                                    "path": "/my-service-b/prod"
                                 },
-                                "id": "4df79c9c-859a-4236-8dd8-8ac7e5461323",
-                                "name": "Service C default profile",
+                                "id": "e3170ca8-21e1-4088-a0a6-714678164645",
+                                "name": "Service B prod profile",
                                 "headers": []
                             }
                         },
@@ -204,6 +204,38 @@
                                 },
                                 "id": "9f557f36-0f55-4809-9886-38d56bc746f6",
                                 "name": "Service C dev profile",
+                                "headers": []
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                                    "name": "GET"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "localhost:8888",
+                                    "path": "/my-service-c/prod"
+                                },
+                                "id": "4df79c9c-859a-4236-8dd8-8ac7e5461323",
+                                "name": "Service C prod profile",
                                 "headers": []
                             }
                         }
@@ -263,8 +295,47 @@
                                         "encoding": "application/x-www-form-urlencoded",
                                         "items": []
                                     },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8080",
+                                    "path": "/actuator/bus-refresh"
+                                },
+                                "id": "a092621d-7ed8-45b8-a3af-3bd0a4491fa0",
+                                "name": "Bus Refresh Endpoint",
+                                "headers": [
+                                    {
+                                        "enabled": true,
+                                        "name": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "requestBody": true,
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                                    "name": "POST"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
                                     "bodyType": "Text",
-                                    "textBody": "{\n\"config\": \"update\"\n}"
+                                    "textBody": ""
                                 },
                                 "uri": {
                                     "query": {
@@ -279,7 +350,7 @@
                                     "path": "/actuator/refresh"
                                 },
                                 "id": "2ccb2ade-9e27-4a89-ae69-fa6896f7f617",
-                                "name": "Actuator Refresh Endpoint",
+                                "name": "Config Refresh Endpoint",
                                 "headers": [
                                     {
                                         "enabled": true,
@@ -409,8 +480,47 @@
                                         "encoding": "application/x-www-form-urlencoded",
                                         "items": []
                                     },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8080",
+                                    "path": "/actuator/bus-refresh"
+                                },
+                                "id": "7e5906ae-7b0e-49cb-9f44-9d1fbf7384a1",
+                                "name": "Bus Refresh Endpoint",
+                                "headers": [
+                                    {
+                                        "enabled": true,
+                                        "name": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "requestBody": true,
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                                    "name": "POST"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
                                     "bodyType": "Text",
-                                    "textBody": "{\n\"config\": \"update\"\n}"
+                                    "textBody": ""
                                 },
                                 "uri": {
                                     "query": {
@@ -425,7 +535,7 @@
                                     "path": "/actuator/refresh"
                                 },
                                 "id": "f63ad0cc-0096-430e-b617-5fcffdca579f",
-                                "name": "Actuator Refresh Endpoint",
+                                "name": "Config Refresh Endpoint",
                                 "headers": [
                                     {
                                         "enabled": true,
@@ -555,8 +665,47 @@
                                         "encoding": "application/x-www-form-urlencoded",
                                         "items": []
                                     },
+                                    "bodyType": "Text"
+                                },
+                                "uri": {
+                                    "query": {
+                                        "delimiter": "&",
+                                        "items": []
+                                    },
+                                    "scheme": {
+                                        "name": "http",
+                                        "version": "V11"
+                                    },
+                                    "host": "172.20.10.3:8082",
+                                    "path": "/actuator/bus-refresh"
+                                },
+                                "id": "45886a4f-103a-4772-aa91-43b51892451c",
+                                "name": "Bus Refresh Endpoint",
+                                "headers": [
+                                    {
+                                        "enabled": true,
+                                        "name": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "entity": {
+                                "type": "Request",
+                                "method": {
+                                    "requestBody": true,
+                                    "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                                    "name": "POST"
+                                },
+                                "body": {
+                                    "formBody": {
+                                        "overrideContentType": true,
+                                        "encoding": "application/x-www-form-urlencoded",
+                                        "items": []
+                                    },
                                     "bodyType": "Text",
-                                    "textBody": "{\n\"config\": \"update\"\n}"
+                                    "textBody": ""
                                 },
                                 "uri": {
                                     "query": {
@@ -571,7 +720,7 @@
                                     "path": "/actuator/refresh"
                                 },
                                 "id": "f6afcdaf-c5e4-4455-b117-7d953eb2de2d",
-                                "name": "Actuator Refresh Endpoint",
+                                "name": "Config Refresh Endpoint",
                                 "headers": [
                                     {
                                         "enabled": true,
