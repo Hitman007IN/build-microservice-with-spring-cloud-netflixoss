@@ -49,13 +49,16 @@
 - java -jar target/my-config-server-0.0.1-SNAPSHOT.jar
 - Check on http://localhost:8888/my-service-a/default, http://localhost:8888/my-service-a/dev based on application name
 
-6) Spin up Zuul Gateway
+6) Spin up RabbitMQ
+- docker run -d -p 15672:15672 -p 5672:5672 -p 5671:5671 --hostname my-rabbitmq --name my-rabbitmq-container rabbitmq:3-management
+
+7) Spin up Zuul Gateway
 - Only Service A is exposed to outside through Zuul
 - mvn clean install -DskipTests
 - java -jar target/my-zuul-gateway-0.0.1-SNAPSHOT.jar
 - Check on http://localhost:8765/health, http://localhost:8765/fetch-bc
 
-7) Spin up Auth Server
+8) Spin up Auth Server
 - Authenticate each request passing through zuul with JWT token
 - mvn clean install -DskipTests
 - java -jar target/my-auth-server-0.0.1-SNAPSHOT.jar
@@ -72,18 +75,18 @@
 	```
 - Once received, call http://localhost:8765/health, http://localhost:8765/fetch-bc with header Authorization: Bearer {TOKEN}
 
-8) Spin up Hystrix Dashboard
+9) Spin up Hystrix Dashboard
 - mvn clean install -DskipTests
 - java -jar target/my-hystrix-dsahboard-0.0.1-SNAPSHOT.jar
 - To add some load
 	- while true; do curl -i http://localhost:8080/fetch-bc; done
 	- while true; do curl -i http://localhost:8081/fetch-b; done
 
-9) Spin up Zipkin server and ui
+10) Spin up Zipkin server and ui
 - docker run -d -p 9411:9411 openzipkin/zipkin
 - http://localhost:9411/zipkin/
 
-10) Spin up ELK in local
+11) Spin up ELK in local
 - Create 02-beats-input.conf
 ```
 input {
