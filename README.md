@@ -5,11 +5,10 @@
 # Tech Stack
 - Java 1.8
 - Spring Boot 2.x
-- Spring Cloud Netflix Hoxton.SR1
-- Spring Cloud Security
 - JWT
-
-# Spring + Netflix OSS Stack
+- Spring Cloud Security
+- Spring Cloud Bus
+- Spring Cloud Config Server
 - Netflix Eureka Server
 - Netflix Zuul
 - Netflix Ribbon
@@ -18,6 +17,7 @@
 - Netflix Feign
 - Sleuth
 - Zipkin
+
 
 # Steps to bring it up
 
@@ -48,6 +48,9 @@
 - mvn clean install -DskipTests
 - java -jar target/my-config-server-0.0.1-SNAPSHOT.jar
 - Check on http://localhost:8888/my-service-a/default, http://localhost:8888/my-service-a/dev based on application name
+
+6) Spin up HashiCorp Vault 
+- brew services start vault
 
 6) Spin up RabbitMQ
 - docker run -d -p 15672:15672 -p 5672:5672 -p 5671:5671 --hostname my-rabbitmq --name my-rabbitmq-container rabbitmq:3-management
