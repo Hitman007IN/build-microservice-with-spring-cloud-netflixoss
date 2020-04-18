@@ -1,2 +1,2 @@
-env: demo-dev
+env: dev
 app: my-service-a
