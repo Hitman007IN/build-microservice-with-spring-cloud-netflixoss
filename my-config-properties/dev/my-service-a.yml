@@ -1,2 +1,2 @@
-env: dev
+env: bus-dev
 app: my-service-a
