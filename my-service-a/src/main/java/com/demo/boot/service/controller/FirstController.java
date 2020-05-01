@@ -3,7 +3,9 @@ package com.demo.boot.service.controller;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +15,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -31,11 +34,17 @@ import lombok.extern.slf4j.Slf4j;
 @RibbonClient(name = "my-service-b", configuration = ServiceBConfiguration.class)
 public class FirstController {
 	
-	@Value("${env}")
+	@Value("${env:default}")
 	private String configEnv;
 	
-	@Value("${app}")
+	@Value("${app:spring-boot}")
 	private String configApp;
+	
+	@Value("${key:default-key}")
+	private String vaultKey;
+	
+	@Value("${value:default-value}")
+	private String vaultValue;
 	
 	@Autowired
 	Environment environment;
@@ -46,15 +55,23 @@ public class FirstController {
 		return builder.build();
 	}
 
-	//@Autowired
-	//RestTemplate restTemplate;
+	@Autowired
+	RestTemplate restTemplate;
 	
 	@Autowired
 	ServiceProxy serviceProxy;
 	
 	@GetMapping("/health") 
 	public String getHealthStatus() {
-		return "I am alright, don't worry. Says Service A with following details: Env: "+this.configEnv+" App: "+this.configApp;
+		
+		//Map<String, String> uriParams = new HashMap<String, String>();
+		//uriParams.put("X-Vault-Token", "s.1S5JQl29S5wwHhdXMuaXx5ke");
+		
+		//ResponseEntity<String> response = restTemplate.getForEntity("http://127.0.0.1:8200/v1/kv/secrets/demo/kv", 
+		//		String.class, uriParams);
+		
+		return "I am alright, don't worry. Says Service A with following details: Env: "+this.configEnv
+				+" App: "+this.configApp + "Secrets from Vault: key:"+vaultKey + " value:"+vaultValue;
 	}
 	
 	@HystrixCommand(commandKey = "fetch-b", fallbackMethod="fetchDefaultServiceDetails")

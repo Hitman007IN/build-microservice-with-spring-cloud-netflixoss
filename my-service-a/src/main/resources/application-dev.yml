@@ -49,6 +49,9 @@ management:
         include: "*"
     shutdown:
       enabled: true
+  health:
+    vault:
+      enabled: true #The vault health indicator can be enabled or disabled through the property, default is true
 
 # Hystrix command specified in the controller method, with additional parameter like timeout of circuit    
 hystrix:

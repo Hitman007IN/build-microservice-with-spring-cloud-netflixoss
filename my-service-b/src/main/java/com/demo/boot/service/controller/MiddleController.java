@@ -33,16 +33,10 @@ import lombok.extern.slf4j.Slf4j;
 @RibbonClient(name = "my-service-c", configuration = ServiceCConfiguration.class)
 public class MiddleController {
 	
-	@LoadBalanced
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
-	}
-	
-	@Value("${env}")
+	@Value("${env:default}")
 	private String configEnv;
 	
-	@Value("${app}")
+	@Value("${app:spring-boot}")
 	private String configApp;
 
 	//@Autowired
@@ -53,6 +47,12 @@ public class MiddleController {
 	
 	@Autowired
 	Environment environment;
+	
+	@LoadBalanced
+	@Bean
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}
 	
 	@GetMapping("/health") 
 	public String getHealthStatus() {

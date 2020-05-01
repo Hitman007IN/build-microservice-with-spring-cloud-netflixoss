@@ -27,10 +27,10 @@ public class LastController {
 	@Autowired
 	Environment environment;
 	
-	@Value("${env}")
+	@Value("${env:default}")
 	private String configEnv;
 	
-	@Value("${app}")
+	@Value("${app:spring-boot}")
 	private String configApp;
 	
 	@GetMapping("/health") 
