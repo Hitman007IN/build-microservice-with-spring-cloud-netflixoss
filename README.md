@@ -17,6 +17,7 @@
 - Netflix Feign
 - Sleuth
 - Zipkin
+- Hashicorp Vault
 
 # Steps to bring it up
 
