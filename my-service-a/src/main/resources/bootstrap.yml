@@ -1,11 +1,8 @@
-spring.cloud.vault:
-    host: localhost
-    port: 8200
-    scheme: https #setting the scheme to http will use plain HTTP. Supported schemes are http and https
-    uri: https://localhost:8200
-    connection-timeout: 5000 #connection timeout in milliseconds
-    read-timeout: 15000
-    config: #sets the order for the property source
-        order: -10
-    authentication: TOKEN
-    token: s.1S5JQl29S5wwHhdXMuaXx5ke
+spring:
+  application:
+    name: my-service-a #This name is important as it tries to get credentails based on this
+  cloud:
+    vault:
+      kv:
+        enabled: true
+      token: 00000000-0000-0000-0000-000000000000

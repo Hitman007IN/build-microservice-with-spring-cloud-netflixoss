@@ -7,8 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.demo.boot.service.pojo.VaultConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -32,6 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 @RefreshScope
 @RestController
 @RibbonClient(name = "my-service-b", configuration = ServiceBConfiguration.class)
+@EnableConfigurationProperties(VaultConfiguration.class)
 public class FirstController {
 	
 	@Value("${env:default}")
@@ -39,13 +42,7 @@ public class FirstController {
 	
 	@Value("${app:spring-boot}")
 	private String configApp;
-	
-	@Value("${key:default-key}")
-	private String vaultKey;
-	
-	@Value("${value:default-value}")
-	private String vaultValue;
-	
+
 	@Autowired
 	Environment environment;
 	
@@ -55,23 +52,21 @@ public class FirstController {
 		return builder.build();
 	}
 
-	@Autowired
-	RestTemplate restTemplate;
+	//@Autowired
+	//RestTemplate restTemplate;
 	
 	@Autowired
 	ServiceProxy serviceProxy;
+
+	@Autowired
+	VaultConfiguration vaultConfiguration;
 	
 	@GetMapping("/health") 
 	public String getHealthStatus() {
 		
-		//Map<String, String> uriParams = new HashMap<String, String>();
-		//uriParams.put("X-Vault-Token", "s.1S5JQl29S5wwHhdXMuaXx5ke");
-		
-		//ResponseEntity<String> response = restTemplate.getForEntity("http://127.0.0.1:8200/v1/kv/secrets/demo/kv", 
-		//		String.class, uriParams);
-		
-		return "I am alright, don't worry. Says Service A with following details: Env: "+this.configEnv
-				+" App: "+this.configApp + "Secrets from Vault: key:"+vaultKey + " value:"+vaultValue;
+		return "****I am alright, don't worry. Says Service A with following details:**** Env: "
+				+this.configEnv +" App: "+this.configApp + " ****Secrets from Vault:**** key username:"
+				+vaultConfiguration.getUsername() +" value password:"+vaultConfiguration.getPassword();
 	}
 	
 	@HystrixCommand(commandKey = "fetch-b", fallbackMethod="fetchDefaultServiceDetails")
