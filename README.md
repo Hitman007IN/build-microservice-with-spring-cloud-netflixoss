@@ -50,7 +50,8 @@
 - Check on http://localhost:8888/my-service-a/default, http://localhost:8888/my-service-a/dev based on application name
 
 6) Spin up HashiCorp Vault 
-- brew services start vault
+- vault server --dev --dev-root-token-id="00000000-0000-0000-0000-000000000000"
+- vault kv put secret/my-service-a servicea.username=vishakh servicea.password=rameshan
 
 6) Spin up RabbitMQ
 - docker run -d -p 15672:15672 -p 5672:5672 -p 5671:5671 --hostname my-rabbitmq --name my-rabbitmq-container rabbitmq:3-management
